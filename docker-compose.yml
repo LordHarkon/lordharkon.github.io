@@ -1,9 +1,8 @@
-version: "3"
 services:
-  app:
+  web:
     build:
-      context: ./
-      dockerfile: Dockerfile
-    image: result/latest
+      context: .
     ports:
-      - "3000:3000"
+      - "${APP_PORT:-3000}:80"
+    restart: unless-stopped
+    pull_policy: build
